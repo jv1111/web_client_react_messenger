@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormTextField from "../../components/FormTextField";
-import { loginApi } from "../api/AuthApi.js";
+import Button from "react-bootstrap/Button";
+import { loginApi } from "../../api/AuthApi.js";
 
 const LoginForm = () => {
 
@@ -19,7 +20,7 @@ const LoginForm = () => {
 
     return(
         <form className="authForm" onSubmit={submitHandler} >
-            <h2 className="labelTitle">Login</h2>
+            <h2 className="formTitle">Login</h2>
             <FormTextField
                 type="text"
                 name="usernameOrEmail"
@@ -34,15 +35,15 @@ const LoginForm = () => {
                 onChange={(event)=>setPassword(event.target.value)}
                 value={password}
             />
-            <button disabled={isSubmitting} className="btnPrimary" type="submit"> Login </button>
-            <button disabled={isSubmitting} className="btnSecondary" type="button"> Sign up </button>
+            <Button disabled={isSubmitting} className="btnPrimary" type="submit"> Login </Button>
+            <Button variant="secondary" disabled={isSubmitting} className="btnSecondary" type="button"> Sign up </Button>
         </form>
     );
 }
 
 const AuthPage = () => {
     return(
-        <div className="page">
+        <div className="page container">
             <div className="titleDiv">
                 <h1 className="title">Messenger</h1>
                 <p className="titel-description">Welcome to messenger</p>

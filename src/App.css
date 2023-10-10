@@ -8,8 +8,77 @@ body {
 }
 
 .App h1{
-  color: white;
   width: fit-content;
-  background-color: black;
   margin: auto;
+}
+
+.page{
+  background-color: orange;
+  padding: 5rem;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titleDiv{
+  display: grid;
+  background-color: aqua;
+  place-items: center;
+}
+
+.authForm{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formTitle{
+  width: fit-content;
+  margin: auto;
+}
+
+.inputBox{
+  position: relative;
+}
+
+.inputBox input {
+  background-color: initial;
+  border: none;
+  color: black;
+  outline: none;
+  width: 100%;
+}
+
+.inputBox label{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  color: gray;
+  transition: 1s;
+}
+
+.inputBox input:valid~label{
+  transform: translate(-5px, -20px);
+  font-size: 12px;
+}
+
+.inputBox input:focus~label {
+  transform: translate(-5px, -20px);
+  font-size: 12px;
+}
+
+.inputBox .line{
+  background-color: black;
+  height: 1px;
 }
