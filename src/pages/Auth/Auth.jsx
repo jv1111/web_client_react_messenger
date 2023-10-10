@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import FormTextField from "../../components/FormTextField";
+import { loginApi } from "../api/AuthApi.js";
 
 const LoginForm = () => {
 
     const [usernameOrEmail, setUsernameOrEmail] = useState("");//"" is the default value
     const [password, setPassword] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const submitHandler = async (event) => {
-        alert("sub");
+        event.preventDefault();//prevent redirecting/refresh
+        setIsSubmitting(true);//disable the buttons
+        const response = await loginApi(usernameOrEmail, password);
+        setIsSubmitting(false);
+        if(!response.success){ return alert(response.response.data.error); }
+        alert("Logged in");
     }
 
     return(
@@ -27,8 +34,8 @@ const LoginForm = () => {
                 onChange={(event)=>setPassword(event.target.value)}
                 value={password}
             />
-            <button className="btnPrimary" type="submit"> Login </button>
-            <button className="btnSecondary" type="button"> Sign up </button>
+            <button disabled={isSubmitting} className="btnPrimary" type="submit"> Login </button>
+            <button disabled={isSubmitting} className="btnSecondary" type="button"> Sign up </button>
         </form>
     );
 }
