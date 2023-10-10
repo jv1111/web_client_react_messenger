@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import FormTextField from "../../components/FormTextField";
 import Button from "react-bootstrap/Button";
 import { loginApi } from "../../api/AuthApi.js";
+import showErrorMessage from "../../utils/errorMessage";
 
 const LoginForm = () => {
 
+    const [errorMessage, setErrorMessage] = useState("");
     const [usernameOrEmail, setUsernameOrEmail] = useState("");//"" is the default value
     const [password, setPassword] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +16,7 @@ const LoginForm = () => {
         setIsSubmitting(true);//disable the buttons
         const response = await loginApi(usernameOrEmail, password);
         setIsSubmitting(false);
-        if(!response.success){ return alert(response.response.data.error); }
+        if(!response.success){ return showErrorMessage(response.response.data.error, setErrorMessage);}
         alert("Logged in");
     }
 
@@ -37,6 +39,7 @@ const LoginForm = () => {
             />
             <Button disabled={isSubmitting} className="btnPrimary" type="submit"> Login </Button>
             <Button variant="secondary" disabled={isSubmitting} className="btnSecondary" type="button"> Sign up </Button>
+            <label className="error">{errorMessage}</label>
         </form>
     );
 }

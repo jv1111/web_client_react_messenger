@@ -82,3 +82,12 @@ body {
   background-color: black;
   height: 1px;
 }
+
+.error{
+  color: red;
+}
+
+form .error{
+  width: fit-content;
+  margin: auto;
+}
