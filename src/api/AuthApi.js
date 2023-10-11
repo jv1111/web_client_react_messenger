@@ -19,6 +19,19 @@ const loginApi = async (usernameOrEmail, password) => {
     }
 }
 
+const registerApi = async (userData) => {
+    try{
+        const response = await axios.post("/auth/register", userData)
+        console.log(response.data);
+        return response.data;
+    }
+    catch(error){
+        console.log(error);
+        return error;
+    }
+}
+
 export {
-    loginApi
+    loginApi,
+    registerApi
 }

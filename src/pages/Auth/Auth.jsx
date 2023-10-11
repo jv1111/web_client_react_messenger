@@ -3,6 +3,7 @@ import FormTextField from "../../components/FormTextField";
 import Button from "react-bootstrap/Button";
 import { loginApi } from "../../api/AuthApi.js";
 import showErrorMessage from "../../utils/errorMessage";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -11,12 +12,14 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const navigate = useNavigate();
+
     const submitHandler = async (event) => {
         event.preventDefault();//prevent redirecting/refresh
         setIsSubmitting(true);//disable the buttons
         const response = await loginApi(usernameOrEmail, password);
         setIsSubmitting(false);
-        if(!response.success){ return showErrorMessage(response.response.data.error, setErrorMessage);}
+        if(!response.success){ return showErrorMessage(response, setErrorMessage);}
         alert("Logged in");
     }
 
@@ -38,7 +41,14 @@ const LoginForm = () => {
                 value={password}
             />
             <Button disabled={isSubmitting} className="btnPrimary" type="submit"> Login </Button>
-            <Button variant="secondary" disabled={isSubmitting} className="btnSecondary" type="button"> Sign up </Button>
+            <Button 
+                variant="secondary"
+                disabled={isSubmitting}
+                className="btnSecondary"
+                type="button"
+                onClick={()=>navigate("/register")}>
+                Sign up 
+            </Button>
             <label className="error">{errorMessage}</label>
         </form>
     );

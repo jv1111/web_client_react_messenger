@@ -91,3 +91,7 @@ form .error{
   width: fit-content;
   margin: auto;
 }
+
+.hide{
+  opacity: 0;
+}
