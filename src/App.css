@@ -95,3 +95,8 @@ form .error{
 .hide{
   opacity: 0;
 }
+
+.centeredElements{
+  display: grid;
+  place-items: center;
+}
