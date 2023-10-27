@@ -21,13 +21,13 @@ const loginApi = async (usernameOrEmail, password) => {
 
 const registerApi = async (userData) => {
     try{
-        const response = await axios.post("/auth/register", userData)
-        console.log(response.data);
+        const data = {...userData, authType: "local"}
+        const response = await axios.post("/auth/register", data)
         return response.data;
     }
     catch(error){
-        console.log(error);
-        return error;
+        if(error.response.status == 500) return { systemError: true, message: "Something went wrong" };
+        if(error.response) return error.response.data
     }
 }
 

@@ -20,7 +20,7 @@ const LoginForm = () => {
         const response = await loginApi(usernameOrEmail, password);
         setIsSubmitting(false);
         if(!response.success){ return showErrorMessage(response, setErrorMessage);}
-        alert("Logged in");
+        navigate("/");
     }
 
     return(

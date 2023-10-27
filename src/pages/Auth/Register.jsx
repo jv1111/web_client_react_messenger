@@ -11,14 +11,14 @@ const RegisterPage = () => {
     const [registerErrorMessage, setRegisterErrorMessage] = useState("");
 
     const initialValues = {
-        email:"",
         username: "",
         password: ""
     }
 
     const submitHandler = async (userData, setSubmitting) => {
         const response = await registerApi(userData);
-        if(!response.success){ showErrorMessage(response, setRegisterErrorMessage) }
+        if(response.systemError) alert(response.message)
+        if(response.error){ showErrorMessage(response.error, setRegisterErrorMessage) }
         setSubmitting(false);
     }
 
@@ -35,12 +35,6 @@ const RegisterPage = () => {
           {({ isSubmitting }) => (
             <Form className="authForm">
             <   h2 className="formTitle">Sign up</h2>
-                <FormikTextField
-                    type="text"
-                    name="email"
-                    label="Email"
-                    required="required"
-                />
                 <FormikTextField
                     type="text"
                     name="username"

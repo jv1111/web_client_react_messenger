@@ -1,9 +1,5 @@
-const showErrorMessage = (response, setErrorMessage) => {
-    if(response.response){
-        setErrorMessage(response.response.data.error)
-    }else{
-        setErrorMessage(response.message)
-    }
+const showErrorMessage = (message, setErrorMessage) => {
+    setErrorMessage(message)
     setTimeout(()=>{
         setErrorMessage("");
     }, 2000);

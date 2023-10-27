@@ -19,7 +19,6 @@ function App() {
         <BrowserRouter>
           <Routes>
 
-            {/* TODO ADD IT TO CS */}
             <Route element={<Pages.ProtectedRoute isAllowed={auth.isLoggedIn} redirectPath={"/auth"}/>}>
               <Route path="/" element={<Pages.Home/>}/>
             </Route>
