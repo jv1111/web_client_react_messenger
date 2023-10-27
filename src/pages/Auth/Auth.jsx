@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
 
     const [errorMessage, setErrorMessage] = useState("");
-    const [usernameOrEmail, setUsernameOrEmail] = useState("");//"" is the default value
+    const [username, setUsername] = useState("");//"" is the default value
     const [password, setPassword] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -17,10 +17,11 @@ const LoginForm = () => {
     const submitHandler = async (event) => {
         event.preventDefault();//prevent redirecting/refresh
         setIsSubmitting(true);//disable the buttons
-        const response = await loginApi(usernameOrEmail, password);
+        const response = await loginApi(username, password);
         setIsSubmitting(false);
-        if(!response.success){ return showErrorMessage(response, setErrorMessage);}
-        navigate("/");
+        console.log(response)
+        if(response.error) return showErrorMessage(response.error, setErrorMessage);
+        navigate("/")
     }
 
     return(
@@ -28,10 +29,10 @@ const LoginForm = () => {
             <h2 className="formTitle">Login</h2>
             <FormTextField
                 type="text"
-                name="usernameOrEmail"
-                label="Username or Email"
-                onChange={(event)=>setUsernameOrEmail(event.target.value)}
-                value={usernameOrEmail}
+                name="username"
+                label="Username"
+                onChange={(event)=>setUsername(event.target.value)}
+                value={username}
             />
             <FormTextField
                 type="password"
