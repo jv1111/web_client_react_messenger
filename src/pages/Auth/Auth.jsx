@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import { loginApi } from "../../api/AuthApi.js";
 import showErrorMessage from "../../utils/errorMessage";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slice/authSlice";
 
 const LoginForm = () => {
 
@@ -12,6 +14,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const submitHandler = async (event) => {
@@ -19,8 +22,8 @@ const LoginForm = () => {
         setIsSubmitting(true);//disable the buttons
         const response = await loginApi(username, password);
         setIsSubmitting(false);
-        console.log(response)
         if(response.error) return showErrorMessage(response.error, setErrorMessage);
+        dispatch(login(response))
         navigate("/")
     }
 
