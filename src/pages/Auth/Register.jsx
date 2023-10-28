@@ -5,10 +5,15 @@ import UserValidationSchema from "../../validation/UserValidationSchema"
 import FormikTextField from "../../components/FormikTextField";
 import { registerApi } from "../../api/AuthApi"
 import showErrorMessage from "../../utils/errorMessage";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
 
     const [registerErrorMessage, setRegisterErrorMessage] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const initialValues = {
         username: "",
@@ -20,6 +25,9 @@ const RegisterPage = () => {
         setSubmitting(false);
         if(response.systemError) return alert(response.error)
         if(response.error){ return showErrorMessage(response.error, setRegisterErrorMessage) }
+        console.log(response)
+        dispatch(login(response))
+        navigate("/")
     }
 
     return (

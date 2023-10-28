@@ -39,8 +39,19 @@ const getSessionApi = async () => {
     }
 }
 
+const logoutApi = async () => {
+    try {
+        const response = await axios.delete("/auth/logout");
+        console.log(response)
+        return response.data;
+    } catch (error) {
+        return apiErrorHandler(error)
+    }
+}
+
 export {
     loginApi,
     registerApi,
-    getSessionApi
+    getSessionApi,
+    logoutApi
 }
