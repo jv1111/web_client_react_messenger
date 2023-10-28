@@ -32,11 +32,10 @@ const registerApi = async (userData) => {
 const getSessionApi = async () => {
     try {
         const response = await axios.get("/auth/loginSession")
-        console.log(response.data);
+        console.log(response);
         return response.data;
     }catch(error){
-        console.log(error);
-        return error;
+        return apiErrorHandler(error)
     }
 }
 

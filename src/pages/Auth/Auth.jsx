@@ -22,6 +22,7 @@ const LoginForm = () => {
         setIsSubmitting(true);//disable the buttons
         const response = await loginApi(username, password);
         setIsSubmitting(false);
+        if(response.systemError) return alert(response.error)
         if(response.error) return showErrorMessage(response.error, setErrorMessage);
         dispatch(login(response))
         navigate("/")

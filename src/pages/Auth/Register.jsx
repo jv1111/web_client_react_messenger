@@ -17,9 +17,9 @@ const RegisterPage = () => {
 
     const submitHandler = async (userData, setSubmitting) => {
         const response = await registerApi(userData);
-        if(response.systemError) alert(response.message)
-        if(response.error){ showErrorMessage(response.error, setRegisterErrorMessage) }
         setSubmitting(false);
+        if(response.systemError) return alert(response.error)
+        if(response.error){ return showErrorMessage(response.error, setRegisterErrorMessage) }
     }
 
     return (

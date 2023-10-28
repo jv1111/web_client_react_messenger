@@ -11,8 +11,8 @@ const useSessionChecker = () => {
     useEffect(()=>{
         const getSession = async () => {
             const response = await getSessionApi();
-            if (response.success) dispatch(login(response.user)) //execute login function from redux authSlice
-            else dispatch(logout())
+            if (response.error) dispatch(logout())
+            else dispatch(login(response)) //execute login function from redux authSlice
             setIsLoading(false)
         }
         getSession()
