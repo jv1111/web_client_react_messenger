@@ -1,10 +1,13 @@
 import React from "react";
 import { logoutApi } from "../../api/AuthApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
+import SidebarMenu from "../../components/SidebarMenu";
+import Chats from "../../components/Chats";
 
-const AuthPage = () => {
+const HomePage = () => {
 
+    const auth  = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
     const logoutHandler = async () => {
@@ -13,11 +16,10 @@ const AuthPage = () => {
     }
 
     return(
-        <div className="page">
-            <h1>Home page</h1>
-            <button onClick={logoutHandler}>Logout</button>
+        <div className="home-page">
+            <SidebarMenu/>
         </div>
     )
 }
 
-export default AuthPage;
+export default HomePage;

@@ -7,7 +7,7 @@ const FormikTextField = ({...props}) => {
         <div>
             <div className="inputBox">
                 <Field {...props} />
-                <label className=""> {props.label} </label>
+                <label className="inputLabel"> {props.label} </label>
                 <div className="line"></div>
             </div>
             <ErrorMessage

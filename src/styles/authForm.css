@@ -1,0 +1,64 @@
+.form{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 10px;
+    display: grid;
+    gap: 5px;
+    min-width: 350px;
+    max-width: 350px;
+}
+
+.form .formTitle{
+    font-weight: bold;
+}
+
+.form .topLine{
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+.form .inputBox{
+    margin-top: 10px;
+    position: relative;
+    display: grid;
+}
+
+.form .inputBox .inputLabel{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.form .inputBox input{
+    border: none;
+    outline: none;
+}
+
+.form .inputBox .line{
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+.error{
+    color: red;
+    margin-left: 5px;
+    font-size: 10pt;
+}
+
+/* ANIMATION */
+
+.form .inputBox input:valid~label{
+    transform: translate(-5px, -20px);
+    font-size: 8pt;
+}
+
+.form .inputBox input:focus~label{
+    transform: translate(-5px, -20px);
+    font-size: 8pt;
+}

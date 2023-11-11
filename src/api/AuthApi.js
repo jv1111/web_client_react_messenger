@@ -12,6 +12,7 @@ const loginApi = async (username, password) => {
             username,
             password
         });
+        console.log(response)
         return response.data;
     }catch(error){
         return apiErrorHandler(error)
@@ -22,6 +23,7 @@ const registerApi = async (userData) => {
     try{
         const data = {...userData, authType: "local"}
         const response = await axios.post("/auth/register", data)
+        console.log(response)
         return response.data;
     }
     catch(error){
@@ -31,7 +33,7 @@ const registerApi = async (userData) => {
 
 const getSessionApi = async () => {
     try {
-        const response = await axios.get("/auth/loginSession")
+        const response = await axios.get("/auth/login")
         console.log(response);
         return response.data;
     }catch(error){

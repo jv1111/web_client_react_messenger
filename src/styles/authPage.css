@@ -1,0 +1,30 @@
+.authCol{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    #authPageContainer{
+        margin-top: 20px;
+    }
+    .authCol{
+        height: 100%;
+    }
+    #title{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .authCol{
+        height: 100%;
+    }
+    #title{
+        text-align: center;
+    }
+    .form{
+        min-width: 100vw;
+    }
+}
