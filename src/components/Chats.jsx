@@ -7,11 +7,20 @@ import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 const Chats = () => {
 
     const [searchResult, setSearchResult] = useState([]);
+    const [selectedUserIndex, setSelectedUserIndex] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(""); 
 
     const handleInputChange = async (e) => {
         const inputValue = e.target.value;
         const response = await searchPeople(inputValue)
         setSearchResult(response)
+    }
+
+    const selectUserHandler = async (selectedUser, index) => {
+        console.log(index)
+        console.log(selectedUser.username)
+        setSelectedUserIndex(index)
+        setSelectedUser(selectedUser.username)
     }
 
     useEffect(()=>{
@@ -41,8 +50,10 @@ const Chats = () => {
             <div className="center">
                 <ul className="userSelection">
                     {searchResult.map((user, key) => {
+                        const isSelected = user.username === selectedUser; // Check if the index and key matches
+                        const userClass = isSelected ? "active user" : "user"; // Define the class based on the selection
                         return (
-                            <li key={key} className="user">
+                            <li key={key} className={userClass} onClick={()=>selectUserHandler(user, key)}>
                                 <div className="profilePicCon">
                                     <img className="profilePic" src="https://woodfibreinsulation.co.uk/wp-content/uploads/2017/04/blank-profile-picture-973460-1-1-1080x1080.png" alt="" />
                                 </div>
