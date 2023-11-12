@@ -1,0 +1,78 @@
+.sideBarResultPanel{
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+.sideBarResultPanel .top{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.sideBarResultPanel .sideBarResultTitle{
+    font-weight: bold;
+}
+
+.sideBarResultPanel .searchBox{
+    background-color: aliceblue;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.sideBarResultPanel .searchBox #inputSearch{
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.sideBarResultPanel .center .profileImage{
+    background-color: white;
+    width: fit-content;
+    padding-inline-start: 20px;
+}
+
+.sideBarResultPanel .center .profileImage img{
+    width: 30px;
+    height: 30px;
+}
+
+.userSelection {
+    padding: 5px;
+    background-color: gold;
+    overflow-x: auto;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+}
+.userSelection li{
+    list-style: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0px;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+}
+.userSelection .profilePic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.userSelection .userName{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+/* animation/effect */
+.userSelection li:hover{
+    background: rgba(0, 0, 0, 0.747);
+    cursor: pointer;
+}

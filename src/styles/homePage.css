@@ -1,0 +1,12 @@
+#mainPage{
+    display: flex;
+}
+#sideBarMenuPanel{
+    background: greenyellow;
+}
+#sideBarResult{
+    background: white;
+}
+#sideBarResultPanel{
+    background-color: orange;
+}

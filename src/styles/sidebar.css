@@ -1,0 +1,16 @@
+#sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+    padding: 10px;
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+.sidebarItem{
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-flex;
+}
