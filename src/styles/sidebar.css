@@ -8,9 +8,17 @@
     border-right: 1px solid black;
 }
 
-.sidebarItem{
-    background-color: black;
+#sidebar .sidebarItem{
     padding: 5px;
     border-radius: 5px;
     display: inline-flex;
+}
+
+#sidebar .sidebarItem:hover{
+    background: rgba(0, 0, 0, 0.747);
+    cursor: pointer;
+}
+
+#sidebar .active{
+    background: rgba(0, 0, 0, 0.747);
 }

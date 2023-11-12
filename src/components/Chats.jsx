@@ -2,12 +2,10 @@ import { useEffect, useState } from "react"
 import "../styles/sidebarResult.css"
 import { Search } from "react-bootstrap-icons"
 import { apiGetUsers, searchPeople } from "../api/ChatApi";
-import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 
 const Chats = () => {
 
     const [searchResult, setSearchResult] = useState([]);
-    const [selectedUserIndex, setSelectedUserIndex] = useState(null);
     const [selectedUser, setSelectedUser] = useState(""); 
 
     const handleInputChange = async (e) => {
@@ -19,7 +17,6 @@ const Chats = () => {
     const selectUserHandler = async (selectedUser, index) => {
         console.log(index)
         console.log(selectedUser.username)
-        setSelectedUserIndex(index)
         setSelectedUser(selectedUser.username)
     }
 

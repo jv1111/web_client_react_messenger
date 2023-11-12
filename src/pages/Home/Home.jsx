@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { logoutApi } from "../../api/AuthApi";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
@@ -8,21 +8,26 @@ import Chats from "../../components/Chats";
 
 const HomePage = () => {
 
-    const auth  = useSelector(state => state.auth)
+    const [activeSidebar, setActiveSidebar] = useState("Messenger");
     const dispatch = useDispatch()
 
     const logoutHandler = async () => {
         await logoutApi()
         dispatch(logout())
     }
-
+    const sideBarResultPanelHandler = () => {
+        switch (activeSidebar) {
+            case "Messenger" : return <Chats />
+        }
+    }
+    console.log(activeSidebar)
     return(
         <div className="full-page" id="mainPage">
             <div id="sideBarMenuPanel">
-                <SidebarMenu/>
+                <SidebarMenu activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar}/>
             </div>
             <div id="sideBarResultPanel">
-                <Chats/>
+                {sideBarResultPanelHandler()}
             </div>
         </div>
     )
