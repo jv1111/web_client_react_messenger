@@ -10,3 +10,33 @@
 #sideBarResultPanel{
     background-color: orange;
 }
+
+/* MAIN CHAT */
+#mainChatPanel{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#mainChatPanel #topInfo{
+    background-color: pink;
+    width: 100%;
+    height: 50px;
+}
+#mainChatPanel #chatPanel{
+    background-color: gray;
+    flex: 1;
+    display: flex;
+}
+#mainChatPanel #chatPanel #chatBox{
+    background-color: red;
+    height: 100%;
+    width: 80%;
+    min-width: 500px;
+}
+#mainChatPanel #chatPanel #chatInfo{
+    background-color: green;
+    height: 100%;
+    flex: 1;/* This will make #chatInfo take up the remaining space */
+}

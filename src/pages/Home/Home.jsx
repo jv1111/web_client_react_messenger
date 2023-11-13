@@ -15,6 +15,7 @@ const HomePage = () => {
         await logoutApi()
         dispatch(logout())
     }
+
     const sideBarResultPanelHandler = () => {
         switch (activeSidebar) {
             case "Messenger" : return <Chats />
@@ -28,6 +29,19 @@ const HomePage = () => {
             </div>
             <div id="sideBarResultPanel">
                 {sideBarResultPanelHandler()}
+            </div>
+            <div id="mainChatPanel">
+                <div id="topInfo">
+                    
+                </div>
+                <div id="chatPanel">
+                    <div id="chatBox">
+
+                    </div>
+                    <div id="chatInfo">
+                        
+                    </div>
+                </div>
             </div>
         </div>
     )
