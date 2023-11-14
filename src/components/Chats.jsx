@@ -3,10 +3,9 @@ import "../styles/sidebarResult.css"
 import { Search } from "react-bootstrap-icons"
 import { apiGetUsers, searchPeople } from "../api/ChatApi";
 
-const Chats = () => {
+const Chats = ({selectedUser, setSelectedUser}) => {
 
     const [searchResult, setSearchResult] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(""); 
 
     const handleInputChange = async (e) => {
         const inputValue = e.target.value;
@@ -17,7 +16,8 @@ const Chats = () => {
     const selectUserHandler = async (selectedUser, index) => {
         console.log(index)
         console.log(selectedUser.username)
-        setSelectedUser(selectedUser.username)
+        console.log(selectedUser)
+        setSelectedUser(selectedUser)
     }
 
     useEffect(()=>{
@@ -47,12 +47,15 @@ const Chats = () => {
             <div className="center">
                 <ul className="userSelection">
                     {searchResult.map((user, key) => {
-                        const isSelected = user.username === selectedUser; // Check if the index and key matches
+                        var isSelected = false;
+                        if(selectedUser !== null){
+                            isSelected = user.username === selectedUser.username; // Check if the index and key matches
+                        }
                         const userClass = isSelected ? "active user" : "user"; // Define the class based on the selection
                         return (
                             <li key={key} className={userClass} onClick={()=>selectUserHandler(user, key)}>
                                 <div className="profilePicCon">
-                                    <img className="profilePic" src="https://woodfibreinsulation.co.uk/wp-content/uploads/2017/04/blank-profile-picture-973460-1-1-1080x1080.png" alt="" />
+                                    <img className="profilePic" src={process.env.REACT_APP_EMPTY_PROFILE_PIC} alt="profile_pic" />
                                 </div>
                                 <label className="userName">{user.username}</label>
                             </li>
@@ -66,20 +69,5 @@ const Chats = () => {
         </div>
     )
 }
-
-const users = [
-    {
-        profilePic: "https://woodfibreinsulation.co.uk/wp-content/uploads/2017/04/blank-profile-picture-973460-1-1-1080x1080.png",
-        userName: "Jeremy"
-    },
-    {
-        profilePic: "https://woodfibreinsulation.co.uk/wp-content/uploads/2017/04/blank-profile-picture-973460-1-1-1080x1080.png",
-        userName: "Alice"
-    },
-    {
-        profilePic: "https://woodfibreinsulation.co.uk/wp-content/uploads/2017/04/blank-profile-picture-973460-1-1-1080x1080.png",
-        userName: "Bob"
-    }
-];
 
 export default Chats

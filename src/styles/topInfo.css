@@ -1,0 +1,31 @@
+#topInfo{
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+#topChatInfo{
+    display: flex;
+}
+
+#topChatInfo .profilePicCon {
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+#topChatInfo .profilePicCon img {
+    width: 40px;
+    height: 40px;
+}
+
+#topChatInfo .tciProfileName{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    pointer-events: none;
+}
+#topChatInfo .tciProfileName label {
+    font-weight: bold;
+}

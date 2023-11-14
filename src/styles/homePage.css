@@ -1,42 +1,45 @@
 #mainPage{
     display: flex;
 }
-#sideBarMenuPanel{
-    background: greenyellow;
-}
-#sideBarResult{
-    background: white;
-}
-#sideBarResultPanel{
-    background-color: orange;
-}
-
-/* MAIN CHAT */
 #mainChatPanel{
-    background-color: white;
-    height: 100%;
-    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
-#mainChatPanel #topInfo{
-    background-color: pink;
-    width: 100%;
-    height: 50px;
+#topInfo{
+    background-color: white;
 }
-#mainChatPanel #chatPanel{
-    background-color: gray;
+#chatPanel{
+    background-color: white;
     flex: 1;
     display: flex;
+    flex-direction: column;
 }
-#mainChatPanel #chatPanel #chatBox{
-    background-color: red;
-    height: 100%;
-    width: 80%;
-    min-width: 500px;
+
+.chatBox{
+    display: flex;
+    flex-direction: column;
 }
-#mainChatPanel #chatPanel #chatInfo{
-    background-color: green;
-    height: 100%;
-    flex: 1;/* This will make #chatInfo take up the remaining space */
+
+.chatBox .messeges{
+    flex: 1;
+    background-color: white;
+}
+
+.chatBox .inputBox{
+    background-color: white;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    border-top: 1px solid black;
+}
+
+.chatBox .inputBox .inputTextBox{
+    flex: 1;
+    display: grid;
+}
+
+.chatBox .inputBox svg{
+    margin-left: 10px;
+    margin-right: 10px;    
 }

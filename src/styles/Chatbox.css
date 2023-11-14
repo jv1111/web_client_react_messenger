@@ -1,0 +1,7 @@
+#chatPanel{
+    display: flex;
+}
+#chatPanel .chatBox{
+    background-color: blue;
+    height: 100%;
+}

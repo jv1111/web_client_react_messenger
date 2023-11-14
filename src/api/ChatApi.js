@@ -27,7 +27,22 @@ const apiGetUsers = async () => {
     }
 }
 
+const apiSendMessage = async (message, sender, receiver) => {
+    try {
+        const response = await axios.put('/chat/sendMessage',{
+            message: message,
+            sender: sender,
+            receiver, receiver
+        })
+        console.log(response)
+        return response.data
+    } catch (error) {
+        return apiErrorHandler(error)
+    }
+}
+
 export {
     searchPeople,
-    apiGetUsers
+    apiGetUsers,
+    apiSendMessage
 }
